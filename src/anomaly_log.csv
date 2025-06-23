@@ -1,0 +1,1 @@
+2025-06-14T02:51:27.188782,8080,64437,118,422,TCP,Potential Reconnaissance or C2 Communication,"The combination of a non-standard source port, high destination port, small packet size, and short duration suggests possible scanning activity or command and control communication.",2.11,8.01
