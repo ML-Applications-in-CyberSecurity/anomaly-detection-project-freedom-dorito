@@ -1,0 +1,38 @@
+def generate_anomaly_data():
+    anomaly_type = random.choice(["port", "packet", "duration", "protocol"])
+    if anomaly_type == "port":
+        return {
+            "src_port": random.choice(SUSPICIOUS_PORTS),
+            "dst_port": random.randint(60000, 65535),
+            "packet_size": random.randint(100, 1500),
+            "duration_ms": random.randint(50, 500),
+            "protocol": "TCP"
+        }
+    elif anomaly_type == "packet":
+        return {
+            "src_port": 443,
+            "dst_port": random.randint(1024, 65535),
+            "packet_size": random.randint(2000, 10000),
+            "duration_ms": random.randint(50, 500),
+            "protocol": "TCP"
+        }
+    elif anomaly_type == "duration":
+        return {
+            "src_port": 80,
+            "dst_port": random.randint(1024, 65535),
+            "packet_size": random.randint(100, 1500),
+            "duration_ms": random.randint(2000, 5000),
+            "protocol": "TCP"
+        }
+    else:  # unknown protocol
+        return {
+            "src_port": 443,
+            "dst_port": random.randint(1024, 65535),
+            "packet_size": random.randint(100, 1500),
+            "duration_ms": random.randint(50, 500),
+            "protocol": "UNKNOWN"
+        }
+
+
+if the port is anomal, data packet looks something like this: {"src_port": random.choice(SUSPICIOUS_PORTS), "dst_port": random.randint(60000, 65535),"packet_size": random.randint(100, 1500),"duration_ms": random.randint(50, 500),"protocol": "TCP"}
+if the packet size is anomal, data packet looks something like this: {"src_port": 443,"dst_port": random.randint(1024, 65535),"packet_size": random.randint(2000, 10000),"duration_ms": random.randint(50, 500),"protocol": "TCP"}

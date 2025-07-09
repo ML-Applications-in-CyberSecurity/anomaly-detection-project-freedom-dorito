@@ -175,7 +175,12 @@ def alert_llm_for_anomaly(data: dict):
             "Given a JSON data point flagged as anomalous, provide **only**:\n"
             "Label: <short description of anomaly>\n"
             "Reason: <possible cause or explanation>\n"
-            "Respond concisely without describing your internal thought process."
+            "Respond concisely without describing your internal thought process.\n"
+            "when responding, note that the data was flagged as anomalous probably for one of these 4 reasons(if not, come up with your own resoning):\n"
+            "1. the ports are anomal: the sorce post is from these SUSPICIOUS PORTS = [1337, 9999, 6666], and/or the destitation post is something between 60000 to 65535\n"
+            "2. the packet size is anomal: the packet size is something between 2000 to 10000\n"
+            "3. the duration is anomal: the packet size is something between 2000 to 5000\n"
+            "4. the protocol is anomal: the protocol is unknown\n"
         )
     }
     user_message = {
